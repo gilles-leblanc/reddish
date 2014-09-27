@@ -1,3 +1,3 @@
-pub use linkedlist::LinkedListNode;
+pub use linkedlist::LinkedList;
 
 pub mod linkedlist;
