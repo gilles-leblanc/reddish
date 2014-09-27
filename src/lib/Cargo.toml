@@ -1,0 +1,8 @@
+[package]
+name  = "reddish_lib"
+version = "0.0.1"
+authors = ["Gilles Leblanc"]
+
+[lib]
+name = "reddish_lib"
+path = "lib.rs"

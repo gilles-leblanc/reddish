@@ -1,0 +1,7 @@
+[package]
+name = "reddish"
+version = "0.0.1"
+authors = ["Gilles Leblanc <gilles.leblanc@gmail.com>"]
+
+[dependencies.reddish_lib]
+path = "src/lib"

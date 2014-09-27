@@ -1,0 +1,11 @@
+[root]
+name = "reddish"
+version = "0.0.1"
+dependencies = [
+ "reddish_lib 0.0.1",
+]
+
+[[package]]
+name = "reddish_lib"
+version = "0.0.1"
+
