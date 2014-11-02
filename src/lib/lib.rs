@@ -1,3 +1,3 @@
-pub use linkedlist::LinkedList;
+pub use linkedlist::EnumLinkedList;
 
 pub mod linkedlist;
