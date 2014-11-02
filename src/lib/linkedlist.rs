@@ -7,6 +7,31 @@ pub struct LinkedListNode {
     value: u32,
     next: Option<Box<LinkedListNode>>
 }
-//impl Iterator<u32> for LinkedList {
-//    fn next(&mut self) -> Option<u32> {
-//        if !self
+
+pub struct LinkedList {
+    head: Option<Box<LinkedListNode>>
+}
+
+impl LinkedList {
+    pub fn new() -> LinkedList {
+        LinkedList {
+            head: None
+        }
+    }
+
+    /// Append a node after the last node of the linked list.
+    pub fn append(node: LinkedListNode) {
+
+    }
+}
+
+#[test]
+fn new_list_is_empty() {
+    let linked_list = LinkedList::new();
+    let head = linked_list.head;
+
+    match linked_list.head {
+        None => assert!(true),
+        _ => assert!(false)
+    }
+}
