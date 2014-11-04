@@ -12,6 +12,7 @@ pub struct LinkedList {
     head: Option<Box<LinkedListNode>>
 }
 
+
 impl LinkedList {
     pub fn new() -> LinkedList {
         LinkedList {
@@ -21,17 +22,17 @@ impl LinkedList {
 
     /// Append a node after the last node of the linked list.
     pub fn append(node: LinkedListNode) {
+        // find end of current list
+            // while ! None
+        //let current: LinkedListNode;
+        //current = head;
 
+        // append at end
     }
 }
 
 #[test]
 fn new_list_is_empty() {
     let linked_list = LinkedList::new();
-    let head = linked_list.head;
-
-    match linked_list.head {
-        None => assert!(true),
-        _ => assert!(false)
-    }
+    assert!(linked_list.head.is_none())
 }
