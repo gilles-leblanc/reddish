@@ -1,17 +1,6 @@
-pub enum EnumLinkedList {
-    Node(u32, Box<EnumLinkedList>),
-    Nil
-}
-
-pub struct LinkedListNode {
-    value: u32,
-    next: Option<Box<LinkedListNode>>
-}
-
 pub struct LinkedList {
     head: Option<Box<LinkedListNode>>
 }
-
 
 impl LinkedList {
     pub fn new() -> LinkedList {
@@ -28,6 +17,12 @@ impl LinkedList {
     }
 }
 
+
+pub struct LinkedListNode {
+    value: u32,
+    next: Option<Box<LinkedListNode>>
+}
+
 impl LinkedListNode {
     pub fn append(&mut self, new_node: LinkedListNode) {
         match self.next {
@@ -36,6 +31,7 @@ impl LinkedListNode {
         }
     }
 }
+
 
 #[test]
 fn new_list_is_empty() {
