@@ -20,18 +20,20 @@ impl LinkedList {
         }
     }
 
-    /// Append a node after the last node of the linked list.
-    pub fn append(&mut self, node: LinkedListNode) {
-        // find end of current list
-            // while ! None
+    pub fn append(&mut self, new_node: LinkedListNode) {
         match self.head {
-            None => self.head = Some(box node),
-            _ => println!("duh"), // don't know what to do here yet
+            Some(ref mut node) => node.append(new_node),
+            None => self.head = Some(box new_node),
         }
-        //let current: LinkedListNode;
-        //current = head;
+    }
+}
 
-        // append at end
+impl LinkedListNode {
+    pub fn append(&mut self, new_node: LinkedListNode) {
+        match self.next {
+            Some(ref mut n) => n.append(new_node),
+            None => self.next = Some(box new_node),
+        }
     }
 }
 
@@ -42,7 +44,7 @@ fn new_list_is_empty() {
 }
 
 #[test]
-fn append_node_to_empty_list_list_contains_at_least_one_node() {
+fn append_node_to_empty_list_contains_at_least_one_node() {
     let mut linked_list = LinkedList::new();
     let node = LinkedListNode { value: 0, next: None };
 
@@ -50,3 +52,37 @@ fn append_node_to_empty_list_list_contains_at_least_one_node() {
     assert!(linked_list.head.is_some())
 }
 
+#[test]
+fn append_node_to_empty_list_contains_node() {
+    let mut linked_list = LinkedList::new();
+    let node = LinkedListNode { value: 10, next: None };
+
+    linked_list.append(node);
+    let head = linked_list.head;
+
+    match head {
+        Some(ref node) => assert!(node.value == 10),
+        None => assert!(false),
+    }
+}
+
+#[test]
+fn append_two_nodes() {
+    let mut linked_list = LinkedList::new();
+    let first_node = LinkedListNode { value: 10, next: None };
+    let second_node = LinkedListNode { value: 20, next: None };
+
+    linked_list.append(first_node);
+    linked_list.append(second_node);
+    let head = linked_list.head;
+
+    match head {
+        Some(ref node) => {
+            match node.next {
+                Some(ref second) => assert!(second.value == 20),
+                None => assert!(false),
+            }
+        },
+        None => assert!(false),
+    }
+}
