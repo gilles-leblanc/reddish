@@ -1,3 +1,5 @@
+use EnumLinkedList::{Node, Nil};
+
 pub enum EnumLinkedList {
     Node(u32, Box<EnumLinkedList>),
     Nil
@@ -13,8 +15,8 @@ impl EnumLinkedList {
 
     fn next(&self) -> &EnumLinkedList {
         match *self {
-            Node(_, next) => &*next,
-            Nil => &Nil,
+            Node(_, ref next) => &**next,
+            Nil => self,
         }
     }
 }
@@ -22,9 +24,9 @@ impl EnumLinkedList {
 
 #[test]
 fn next_returns_next_element() {
-    let list = Node(1, box Node(2, box Nil));
+    let mut list = Node(1, box Node(2, box Nil));
 
-    match list.next() {
+    match *list.next() {
         Node(2, _) => assert!(true),
         _ => assert!(false),
     }
@@ -32,8 +34,11 @@ fn next_returns_next_element() {
 
 #[test]
 fn append_node_to_list() {
-    let list = Node(1, box Node(2, box Nil));
+    let mut list = Node(1, box Node(2, box Nil));
     list.append(4);
 
-
+    match *list.next().next() {
+        Node(4, _) => assert!(true),
+        _ => assert!(false),
+    }
 }
