@@ -6,6 +6,10 @@ pub enum EnumLinkedList {
 }
 
 impl EnumLinkedList {
+    fn prepend(self, element: u32) -> EnumLinkedList {
+        Node(element, box self)
+    }
+
     fn append(&mut self, element: u32) {
         match *self {
             Node(_, ref mut next) => next.append(element),
@@ -21,6 +25,16 @@ impl EnumLinkedList {
     }
 }
 
+#[test]
+fn prepend_adds_element_to_front_of_list() {
+    let list = Node(1, box Nil);
+    let new_list = list.prepend(0);
+
+    match new_list {
+        Node(0, _) => assert!(true),
+        _ => assert!(false),
+    }
+}
 
 #[test]
 fn next_returns_next_element() {

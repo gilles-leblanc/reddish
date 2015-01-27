@@ -15,6 +15,17 @@ impl LinkedList {
             None => self.head = Some(box new_node),
         }
     }
+
+    pub fn prepend_value(&mut self, value: u32) {
+        let mut new_node = LinkedListNode { value: value, next: None };
+
+        match self.head {
+            Some(ref node) => new_node.next = Some(node),
+            None => new_node.next = None,
+        };
+
+        self.head = Some(box new_node);
+    }
 }
 
 
