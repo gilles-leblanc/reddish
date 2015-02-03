@@ -1,3 +1,5 @@
+#![feature(box_syntax)]
+
 extern crate reddish_lib;
 
 use reddish_lib::enumlinkedlist::EnumLinkedList::{Node, Nil};
@@ -30,5 +32,5 @@ fn main() {
         Nil => None
     };
 
-    println!("Second value {0}", dsec);
+    println!("Second value {0}", dsec.unwrap());
 }
